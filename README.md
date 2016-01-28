@@ -79,7 +79,7 @@ const order = new Order(1);
 
 ```
 
-### entity#record(cmd, data)
+### entity.record(cmd, data)
 
 Record entity event and parameters.
 
@@ -100,7 +100,7 @@ class TestEntity extends Entity {
 
 ```
 
-### entity#reply(event)
+### entity.reply(event)
 
 Apply one or multiple events to an entity.
 
@@ -136,7 +136,7 @@ const events = [
 entity.reply(events);
 ```
 
-### entity#emit(event, data)
+### entity.emit(event, data)
 
 Emit an entity event.
 
@@ -150,7 +150,7 @@ entity.on('started', data => {
 })
 ```
 
-### entity#enqueue(event, data)
+### entity.enqueue(event, data)
 
 Wait to emit an event after it is committed.
 
@@ -165,7 +165,7 @@ entity.on('ended', data => {
 })
 ```
 
-### entity#snap()
+### entity.snap()
 
 Create a snapshot of an entity state.
 
@@ -186,7 +186,7 @@ TestEntity {
 
 ```
 
-### entity#restore(snap)
+### entity.restore(snap)
 
 Restore an entity from a snapshot.
 
