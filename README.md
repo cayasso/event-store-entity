@@ -14,7 +14,6 @@ $ npm install event-store-entity
 ## Usage
 
 ```js
-
 import Entity from 'event-store-entity';
 
 class TestEntity extends Entity {
@@ -202,6 +201,10 @@ entity.restore(snapshot);
 ```bash
 $ make test
 ```
+
+## Credits
+
+This library was inspired by the [sourced](https://github.com/mateodelnorte/sourced) project.
 
 ## License
 
