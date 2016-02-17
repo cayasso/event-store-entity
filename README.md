@@ -110,7 +110,8 @@ const event = {
   id: 1,
   ts: 1453945415486,
   version: 0,
-  revision: 1
+  revision: 1,
+  scope: 'TestEntity'
 };
 
 entity.reply(event);
@@ -123,13 +124,15 @@ const events = [
     id: 1,
     ts: 1453945415486,
     version: 0,
-    revision: 1 },
+    revision: 1,
+    scope: 'TestEntity' },
   { cmd: 'end',
     data: { agent: 'jack' },
     id: 2,
     ts: 1453945415486,
     version: 0,
-    revision: 2 }
+    revision: 2,
+    scope: 'TestEntity' }
 ]
 
 entity.reply(events);
@@ -178,6 +181,7 @@ TestEntity {
   revision: 2,
   ts: 1453945110760,
   id: 1,
+  scope: 'TestEntity',
   status: 'ended',
   startedBy: 'jonathan',
   endedBy: 'raul' }
