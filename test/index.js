@@ -1,10 +1,7 @@
 'use strict';
 
 import should from 'should';
-//import Entity from '../node';
-
-const Entity = require('../node');
-
+import Entity from '../lib';
 
 let id = 0;
 
