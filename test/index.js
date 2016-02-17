@@ -1,7 +1,10 @@
 'use strict';
 
 import should from 'should';
-import Entity from '../lib';
+//import Entity from '../node';
+
+const Entity = require('../node');
+
 
 let id = 0;
 
@@ -58,16 +61,21 @@ describe('event-store-entity', function() {
     entity.enqueue.should.be.a.Function;
   });
 
+  it('should set class name as scope', () => {
+    class Order extends Entity {}
+    (new Order).scope.should.be.equal('Order');
+  });
+
   it('should record events', () => {
     let entity = new TestEntity(id++);
     entity.start({ agent: 'jonathan' });
     entity.end({ agent: 'raul' });
     entity.events.length.should.be.eql(2);
     entity.events[0].cmd.should.be.eql('start');
-    entity.events[0].should.have.properties(['id', 'ts', 'cmd', 'data', 'version', 'revision']);
+    entity.events[0].should.have.properties(['id', 'ts', 'scope', 'cmd', 'data', 'version', 'revision']);
     entity.events[0].data.should.have.properties({ agent: 'jonathan' });
     entity.events[1].cmd.should.be.eql('end');
-    entity.events[1].should.have.properties(['id', 'ts', 'cmd', 'data', 'version', 'revision']);
+    entity.events[1].should.have.properties(['id', 'ts', 'scope', 'cmd', 'data', 'version', 'revision']);
     entity.events[1].data.should.have.properties({ agent: 'raul' });
   });
 
@@ -94,7 +102,8 @@ describe('event-store-entity', function() {
       "data": { "agent": "tomas" },
       "id": entity.id,
       "revision": 1,
-      "ts": 1442799956314
+      "ts": 1442799956314,
+      "scope": "TestEntity"
     });
     entity.status.should.be.eql('started');
     entity.startedBy.should.be.eql('tomas');
@@ -108,13 +117,15 @@ describe('event-store-entity', function() {
       "data": { "agent": "tomas" },
       "id": entity.id,
       "revision": 1,
-      "ts": 1442799956314
+      "ts": 1442799956314,
+      "scope": "TestEntity"
     },{
       "cmd": "end",
       "data": { "agent": "mery" },
       "id": entity.id,
       "revision": 2,
-      "ts": 1442799956315
+      "ts": 1442799956315,
+      "scope": "TestEntity"
     }]);
     entity.status.should.be.eql('ended');
     entity.endedBy.should.be.eql('mery');
@@ -123,7 +134,7 @@ describe('event-store-entity', function() {
 
   it('should not emit events when replaying', () => {
     let entity = new TestEntity(id++);
-    entity.on('start', function() {
+    entity.on('start', () => {
       throw Error('Should not emit start');
     })
     entity.replay({
@@ -131,7 +142,8 @@ describe('event-store-entity', function() {
       "data": { "agent": "tomas" },
       "id": entity.id,
       "revision": 1,
-      "ts": 1442799956314
+      "ts": 1442799956314,
+      "scope": "TestEntity"
     });
   });
 
@@ -142,7 +154,8 @@ describe('event-store-entity', function() {
       "data": { "agent": "tomas" },
       "id": entity.id,
       "revision": 1,
-      "ts": 1442799956314
+      "ts": 1442799956314,
+      "scope": "TestEntity"
     });
     entity.events.should.be.empty();
   });

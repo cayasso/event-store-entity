@@ -19,19 +19,19 @@
   "dependencies": {
     "debug": "^2.2.0",
     "eventemitter3": "^1.1.1",
-    "lodash": "^4.0.1",
+    "lodash": "^4.4.0",
     "predefine": "^0.1.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-core": "^6.4.5",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
     "babel-plugin-add-module-exports": "^0.1.2",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-2": "^6.3.13",
-    "babel-register": "^6.4.3",
-    "mocha": "~2.4.4",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "mocha": "~2.4.5",
     "pre-commit": "1.1.2",
-    "should": "^8.2.1"
+    "should": "^8.2.2"
   },
   "babel": {
     "presets": [
