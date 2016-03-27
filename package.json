@@ -33,15 +33,6 @@
     "pre-commit": "1.1.2",
     "should": "^8.2.2"
   },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-2"
-    ],
-    "plugins": [
-      "babel-plugin-add-module-exports"
-    ]
-  },
   "pre-commit": [
     "test"
   ]
